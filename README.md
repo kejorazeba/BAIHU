@@ -1,6 +1,6 @@
-# DIABO NEGRO
+# BAIHU
 
-**DIABO NEGRO** é uma ferramenta multi-função para testes de segurança, incluindo ataques de força bruta, ataques de negação de serviço (HTTP, UDP, SYN Flood), rastreamento de IP e busca por imagens via PimEyes.
+**BAIHU** é uma ferramenta multi-função para testes de segurança, incluindo ataques de força bruta, ataques de negação de serviço (HTTP, UDP, SYN Flood), rastreamento de IP e busca por imagens via PimEyes.
 
 ---
 
