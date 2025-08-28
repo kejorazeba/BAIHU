@@ -1,6 +1,6 @@
-# BAIHU
+# WHITE TIGER
 
-**BAIHU** is a multi-function tool for security testing, including brute force attacks, denial of service attacks (HTTP, UDP, SYN Flood), IP tracking and image search via PimEyes..
+**WHITE TIGER** is a multi-function tool for security testing, including brute force attacks, denial of service attacks (HTTP, UDP, SYN Flood), IP tracking and image search via PimEyes..
 
 ---
 
