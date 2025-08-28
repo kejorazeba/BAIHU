@@ -18,7 +18,7 @@
 - Nescafe Cappucino
 - Dji Sam Soe Signature
 
-Install de dependencies:
+Install dependencies:
 
 ```bash
 pip install requests beautifulsoup4
