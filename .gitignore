@@ -21,6 +21,6 @@ Thumbs.db
 .idea/
 *.swp
 
-# Proxy file (se for gerado localmente e não quiser versionar)
+# Proxy file (if it is generated locally and you don't want to version it)
 proxy.txtt
 
