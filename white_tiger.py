@@ -191,7 +191,7 @@ def main():
     while True:
         op = menu()
         if op=="1":
-            ao = menu_ataques()
+            ao = menu_attacks()
             if ao=="1":
                 url=input("URL target: ")
                 t=int(input("Threads: "))
