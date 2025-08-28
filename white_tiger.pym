@@ -129,7 +129,7 @@ def trace_ip_api(ip):
         else:
             print("Search failed.")
     except Exception as e:
-        print("Erro:", e)
+        print("Error:", e)
 
 def trace_ip_multi(ip):
     print(f"{C.C}Verification IPinfo + ip-api{C.E}")
@@ -141,7 +141,7 @@ def trace_ip_multi(ip):
 
 # === PIMEYES ===
 def pimeyes_search(query):
-    print(f"{C.Y}Buscando no PimEyes → '{query}'{C.E}")
+    print(f"{C.Y}Searching no PimEyes → '{query}'{C.E}")
     try:
         r = requests.get("https://pimeyes.com/pt/search", headers={"User-Agent":random.choice(USER_AGENTS)}, params={"search":query}, timeout=10)
         soup=BeautifulSoup(r.text,"html.parser")
@@ -163,7 +163,7 @@ def menu():
     print(f"{C.Y}2{C.E} - Brute Force")
     print(f"{C.Y}3{C.E} - Tracking IP")
     print(f"{C.Y}4{C.E} - PimEyes Search")
-    print(f"{C.Y}0{C.E} - To Go")
+    print(f"{C.Y}0{C.E} - Back")
     return input("Choice: ").strip()
 
 def menu_attacks():
@@ -216,12 +216,12 @@ def main():
             elif bo=="3": basic_auth_brute(input("URL Basic Auth: "))
         elif op=="3":
             tr = menu_trace()
-            if tr=="1": trace_ip_multi(input("IP para rastrear: "))
+            if tr=="1": trace_ip_multi(input("IP tracker: "))
         elif op=="4":
             pm = menu_pimeyes()
-            if pm=="1": pimeyes_search(input("Termo ou URL: "))
+            if pm=="1": pimeyes_search(input("Term or URL: "))
         elif op=="0":
-            print(f"{C.G}Encerrando o DIABO NEGRO...{C.E}")
+            print(f"{C.G}Close the WHITE TIGER ...{C.E}")
             sys.exit()
         else:
             print(f"{C.R}Opção inválida.{C.E}")
