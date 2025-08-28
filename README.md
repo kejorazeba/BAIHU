@@ -1,24 +1,24 @@
 # BAIHU
 
-**BAIHU** é uma ferramenta multi-função para testes de segurança, incluindo ataques de força bruta, ataques de negação de serviço (HTTP, UDP, SYN Flood), rastreamento de IP e busca por imagens via PimEyes.
+**BAIHU** is a multi-function tool for security testing, including brute force attacks, denial of service attacks (HTTP, UDP, SYN Flood), IP tracking and image search via PimEyes..
 
 ---
 
-## Funcionalidades
+## Functions
 
-- Ataques: HTTP Flood, UDP Flood, SYN Flood, Combo Flood
-- Força Bruta: MegaMedusa (HTTP POST), Pandora (TCP), HTTP Basic Auth
-- Rastreamento de IP: IP-API e IPinfo
-- Busca PimEyes: busca por imagens (engenharia social)
+- Attacks: HTTP Flood, UDP Flood, SYN Flood, Combo Flood
+- Brute Force: MegaMedusa (HTTP POST), Pandora (TCP), HTTP Basic Auth
+- Tracking IP: IP-API and IPinfo
+- Search PimEyes: image search (social engineering)
 
 ---
 
-## Requisitos
+## Requests
 
 - Python 3.x
-- Bibliotecas: requests, beautifulsoup4
+- Libraries: requests, beautifulsoup4
 
-Instale as dependências:
+Install de dependencies:
 
 ```bash
 pip install requests beautifulsoup4
