@@ -2,7 +2,7 @@ import os, sys, time, random, socket, requests
 from concurrent.futures import ThreadPoolExecutor
 from bs4 import BeautifulSoup
 
-# === CONFIGURAÇÕES ===
+# === CONFIGURATIONS ===
 MAX_THREADS = 500
 TIMEOUT = 5
 PROXY_FILE = "proxy.txt"
