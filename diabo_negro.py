@@ -10,7 +10,7 @@ PASSWORDS = ["123456", "password", "admin123", "root", "1234", "letmein", "qwert
 
 USER_AGENTS = [
     "Mozilla/5.0 (Windows NT 10.0; Win64; x64)...",
-    # Outros user agents omitidos para brevidade
+   # Other user agents omitted for brevity
 ]
 
 UDP_SIZE = 65500
