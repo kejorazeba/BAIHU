@@ -24,8 +24,8 @@ def clear(): os.system('cls' if os.name=='nt' else 'clear')
 
 def banner():
     clear()
-    print(f"{C.R}🔥😈 DIABO NEGRO 😈🔥{C.E}")
-    print(f"{C.C}Ferramenta multi-função by SALATIEL & ZHADKYEL{C.E}")
+    print(f"{C.R}🔥 WHITE TIGER 🔥{C.E}")
+    print(f"{C.C}DDoS tools multi-function by White Tihlger {C.E}")
     print("="*55)
 
 def load_proxies():
