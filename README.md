@@ -15,8 +15,8 @@
 
 ## Requests
 
-- Python 3.x
-- Libraries: requests, beautifulsoup4
+- Nescafe Cappucino
+- Dji Sam Soe Signature
 
 Install de dependencies:
 
